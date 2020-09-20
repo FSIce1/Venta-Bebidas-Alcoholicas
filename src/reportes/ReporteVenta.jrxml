@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="cod_venta" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[
+SELECT
+	 v.codigo_venta,
+     t.id_bebida_venta,
+     a.descripcion_trago,
+	DATE_FORMAT(v.fecha_venta, '%Y/%m/%d'), 
+a.costo_trago as costoTrago,
+     t.cantidad,
+     a.unidadmd_trago,
+a.costo_trago*t.cantidad as costo,
+v.total_venta as total
+FROM tb_bebida_venta t
+INNER JOIN tb_venta v ON t.id_venta_fk=v.id_venta
+INNER JOIN tb_trago a ON t.id_trago_fk=a.id_trago
+WHERE v.id_venta=$P{cod_venta}]]>
+	</queryString>
+	<field name="codigo_venta" class="java.lang.String"/>
+	<field name="id_bebida_venta" class="java.lang.Integer"/>
+	<field name="descripcion_trago" class="java.lang.String"/>
+	<field name="DATE_FORMAT(v.fecha_venta, &apos;%Y/%m/%d&apos;)" class="java.lang.String"/>
+	<field name="costoTrago" class="java.lang.Double"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="unidadmd_trago" class="java.lang.Integer"/>
+	<field name="costo" class="java.lang.Double"/>
+	<field name="total" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="133" splitType="Stretch">
+			<rectangle>
+				<reportElement x="386" y="13" width="158" height="95"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="386" y="46" width="158" height="31" backcolor="#99FFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTURA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="444" y="86" width="89" height="20" forecolor="#FF0000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{codigo_venta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="420" y="86" width="24" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N° :]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="17" y="13" width="122" height="107"/>
+				<imageExpression class="java.lang.String"><![CDATA["D:\\USB - FELIPE\\Universidad\\c\\Proyectos\\Proyecto Escritorio\\Proyecto Bass-Recuerdos\\Proyecto Bass-Recuerdos\\src\\reportes\\bass.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="153" y="26" width="100" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BASS - DISCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="26" width="35" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="26" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DATE_FORMAT(v.fecha_venta, '%Y/%m/%d')}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="63" y="35" width="389" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Title" mode="Opaque" x="63" y="21" width="155" height="15" backcolor="#99FFFF"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" mode="Opaque" x="288" y="21" width="64" height="15" backcolor="#99FFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" mode="Opaque" x="218" y="21" width="70" height="15" backcolor="#99FFFF"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<text><![CDATA[Costo Bebida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" mode="Opaque" x="352" y="21" width="100" height="15" backcolor="#99FFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<text><![CDATA[Costo Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="63" y="15" width="389" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="288" y="0" width="64" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="218" y="0" width="70" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{costoTrago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="1" width="100" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{costo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="63" y="1" width="155" height="15"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion_trago}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="352" y="4" width="100" height="20" forecolor="#CC0000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="307" y="3" width="45" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total: ]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

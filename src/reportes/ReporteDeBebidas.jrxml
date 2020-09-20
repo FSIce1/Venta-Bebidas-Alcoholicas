@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT `id_trago`, `descripcion_trago`, `id_cod_trago`, `unidadmd_trago`, `cantidad_trago`, `costo_trago` FROM `tb_trago`]]>
+	</queryString>
+	<field name="id_trago" class="java.lang.Integer"/>
+	<field name="id_cod_trago" class="java.lang.String"/>
+	<field name="descripcion_trago" class="java.lang.String"/>
+	<field name="unidadmd_trago" class="java.lang.Integer"/>
+	<field name="cantidad_trago" class="java.lang.Double"/>
+	<field name="costo_trago" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="13" width="212" height="42" backcolor="#00CCCC"/>
+				<textElement textAlignment="Left">
+					<font fontName="Segoe UI" size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Lista De Bebidas]]></text>
+			</staticText>
+			<image>
+				<reportElement x="484" y="0" width="92" height="71"/>
+				<imageExpression class="java.lang.String"><![CDATA["D:\\USB - FELIPE\\Universidad\\c\\Proyectos\\Proyecto Escritorio\\Proyecto Bass-Recuerdos\\Proyecto Bass-Recuerdos\\src\\reportes\\bass.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="47" height="20" backcolor="#3399FF"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="0" width="85" height="20" backcolor="#3399FF"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="132" y="0" width="144" height="20" backcolor="#3399FF"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="92" height="20" backcolor="#3399FF"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="368" y="0" width="92" height="20" backcolor="#3399FF"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="460" y="0" width="92" height="20" backcolor="#3399FF"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="47" y="3" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{id_cod_trago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="3" width="45" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{id_trago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="3" width="144" height="20"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion_trago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="3" width="92" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{unidadmd_trago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="2" width="92" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{cantidad_trago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="3" width="92" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{costo_trago}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="1" width="550" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="432" y="34" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="512" y="34" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
