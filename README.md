@@ -1,7 +1,7 @@
-# Proyecto de Ventas Alcohólicas
+# Sistema de Ventas Alcohólicas
 ### _Siesquen Valdivia, Luis Felipe_
 
-Proyecto para la venta de bebidas alcohólicas.
+Sistema para la venta de bebidas alcohólicas.
 
 ## Módulos
 
